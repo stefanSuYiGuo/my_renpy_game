@@ -1,13 +1,41 @@
-﻿define e = Character('Eileen')
+﻿define e = Character(
+    'Eileen',
+    what_size = 30,
+    who_size = 40,
+    who_color="#ed7bb8",
+    who_outlines=[(4, '#fff', 0, 0)],
+    who_font='Muyao-Softbrush Regular.ttf',
+    what_font='Muyao-Softbrush Regular.ttf',
+    what_prefix='[[',
+    what_suffix=']',
+    who_bold=True,
+    image='avatar',
+    ctc='ctc',
+    ctc_position='nestled'
+)
+
+define config.say_attribute_transition = Dissolve(0.4)
+
 define sound7 = 'music/epic-cinematic-trailer.mp3'
 define x = 0
 
-# image pic_1 = im.Scale('loli.jpeg', 1920, 1080)
-# image pic_2 = im.Scale('loli2.jpeg', 1920, 1080)
-image pic_1 = 'loli.jpeg'
-image pic_2 = 'loli2.jpeg'
+# image pic_1 = im.Scale('loli.png', 1920, 1080)
+# image pic_2 = im.Scale('loli2.png', 1920, 1080)
+image pic_1 = 'images/loli.png'
+image pic_2 = 'images/loli2.png'
 image pic_3 = im.Scale('2.jpg', 1920, 1080)
 image logo = im.Scale('logo.png', 1920, 1080)
+
+# add side to indicate as avatar
+image side avatar = 'images/avatar.png'
+image side avatar b = 'images/avatar.png'
+image side avatar c = 'images/avatar2.png'
+
+image avatar = 'images/avatar_large.png'
+image avatar b = 'images/avatar_large.png'
+image avatar c = 'images/avatar2_large.png'
+
+image ctc = 'images/pink.jpg'
 
 # label start:
     # play music 'music/MainTheme.mp3'
@@ -53,47 +81,54 @@ image logo = im.Scale('logo.png', 1920, 1080)
     # return
 
 
+# label start:
+#     stop music
+#     # a: link-hyperlink
+#     e 'Hello {a=call:hello}call hello label{/a}!'
+#     e 'Hello {a=https://www.google.com}google hyperlink{/a}!'
+#     # image: image
+#     e 'Hello {image=images/loli3.png} image!'
+#     # size: font-size
+#     e 'Hello {size=45}font-size{/size}!'
+#     # color: font-color
+#     e 'Hello {color=#ef30a2}font-color{/color}!'
+#     # alpha: transparency
+#     e 'Hello {alpha=0.5}tranparency{/alpha}!'
+#     # font: font-style
+#     e 'Hello {font=Muyao-Softbrush Regular.ttf}font-style{/font}!'
+#     # b: bold
+#     e 'Hello {b}bold{/b}!'
+#     # i: italic
+#     e 'Hello {i}italic{/i}!'
+#     return
+
+
+# label hello:
+#     'Hello label'
+#     return
+
+
+# label quit:
+#     'You shut down the game!'
+#     return
+
+
+# label after_load:
+#     'You read the document'
+#     return
+
+
+# label splashscreen:
+#     scene logo
+#     with dissolve
+#     hide logo
+#     with fade
+#     return
+
 label start:
-    stop music
-    # a: link-hyperlink
-    e 'Hello {a=call:hello}call hello label{/a}!'
-    e 'Hello {a=https://www.google.com}google hyperlink{/a}!'
-    # image: image
-    e 'Hello {image=images/loli3.jpeg} image!'
-    # size: font-size
-    e 'Hello {size=45}font-size{/size}!'
-    # color: font-color
-    e 'Hello {color=#ef30a2}font-color{/color}!'
-    # alpha: transparency
-    e 'Hello {alpha=0.5}tranparency{/alpha}!'
-    # font: font-style
-    e 'Hello {font=Muyao-Softbrush Regular.ttf}font-style{/font}!'
-    # b: bold
-    e 'Hello {b}bold{/b}!'
-    # i: italic
-    e 'Hello {i}italic{/i}!'
-    return
-
-
-label hello:
-    'Hello label'
-    return
-
-
-label quit:
-    'You shut down the game!'
-    return
-
-
-label after_load:
-    'You read the document'
-    return
-
-
-label splashscreen:
-    scene logo
-    with dissolve
-    hide logo
-    with fade
+    show avatar
+    e b "Hello my friend! My first avatar"
+    e "My default avatar"
+    e c 'My another avatar'
     return
     
