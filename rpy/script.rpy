@@ -25,6 +25,7 @@ image pic_1 = 'images/loli.png'
 image pic_2 = 'images/loli2.png'
 image pic_3 = im.Scale('2.jpg', 1920, 1080)
 image logo = im.Scale('logo.png', 1920, 1080)
+image bg = im.Scale('bg.jpeg', 1920, 1080)
 
 # add side to indicate as avatar
 image side avatar = 'images/avatar.png'
@@ -35,7 +36,25 @@ image avatar = 'images/avatar_large.png'
 image avatar b = 'images/avatar_large.png'
 image avatar c = 'images/avatar2_large.png'
 
-image ctc = 'images/pink.jpg'
+image ctc = 'images/pink.png'
+
+# image black:
+#     contains:
+#         '#000000'
+#         topleft
+#         size(640, 360)
+#     contains:
+#         '#fff'
+#         topright
+#         size(640, 360)
+#     contains:
+#         '#aaa'
+#         left
+#         size(640, 360)
+#     contains:
+#         '#666'
+#         right
+#         size(640, 360)
 
 # label start:
     # play music 'music/MainTheme.mp3'
@@ -126,9 +145,39 @@ image ctc = 'images/pink.jpg'
 #     return
 
 label start:
-    show avatar
+    scene bg
+    show avatar:
+        # xpos 0
+        # ypos 0
+        subpixel True
+        xalign 0.0
+        yalign 1.0
+        zoom 1.2
+        alpha 0.9
+        rotate 0
+        rotate_pad False
+        transform_anchor True
+        # rotate 360 in 3 seconds
+        # linear 3 rotate 360
+
+        pause 1.0
+        parallel:
+            # move to right
+            easein 3 xalign 1.0
+        parallel:
+            # move to right
+            easein 3 yalign 0.0
     e b "Hello my friend! My first avatar"
     e "My default avatar"
     e c 'My another avatar'
     return
-    
+
+
+label before_main_menu:
+    scene black
+    # pause
+    show logo
+    with dissolve
+    hide logo
+    with fade
+    return
